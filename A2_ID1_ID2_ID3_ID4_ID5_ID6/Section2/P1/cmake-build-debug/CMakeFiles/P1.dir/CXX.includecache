@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/Courses/Data Structure/Assignment 2/A2_ID1_ID2_ID3_ID4_ID5_ID6/Section2/P1/DoubleLinkedList.hpp
+
+F:/Courses/Data Structure/Assignment 2/A2_ID1_ID2_ID3_ID4_ID5_ID6/Section2/P1/main.cpp
+iostream
+-
+DoubleLinkedList.hpp
+F:/Courses/Data Structure/Assignment 2/A2_ID1_ID2_ID3_ID4_ID5_ID6/Section2/P1/DoubleLinkedList.hpp
+
