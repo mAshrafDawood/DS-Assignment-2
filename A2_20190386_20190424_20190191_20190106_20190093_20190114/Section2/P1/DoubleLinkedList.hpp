@@ -21,14 +21,17 @@ private:
     int length;
 public:
     class iterator{
+        friend class DoubleLinkedList<T>;
         Node* current;
     public:
         void operator++(){
-            if (current == tail) throw std::runtime_error("You are already at the end of the list");
+            if (current == nullptr) throw std :: runtime_error("Null pointer exception");
+            if (current->next == nullptr) throw std :: runtime_error("You are already at the end of the list");
             current = current->next;
         }
         void operator--(){
-            if (current == this->head) throw std :: runtime_error("You are already at the start of the list");
+            if (current == nullptr) throw std :: runtime_error("Null pointer exception");
+            if (current->prev == nullptr) throw std :: runtime_error("You are already at the start of the list");
             current = current->prev;
         }
         T& operator*(){
@@ -53,7 +56,6 @@ public:
             temp = temp->next;
         }
         tail = temp;
-        tail->next = new Node();
         length = initSize;
     }
     ~DoubleLinkedList(){
@@ -73,12 +75,16 @@ public:
     void insert(T elem, iterator pos){
         Node *toAdd = new Node(elem);
 
-        toAdd->next = pos.current;
-        pos.current->prev = toAdd;
-
-        if (pos.current->prev != nullptr){
+        if (pos.current == head){
+            head->prev = toAdd;
+            toAdd->next = head;
+            head = toAdd;
+        }
+        else if (pos.current != nullptr){
             pos.current->prev->next = toAdd;
             toAdd->prev = pos.current->prev;
+            pos.current->prev = toAdd;
+            toAdd->next = pos.current;
         }
     }
     iterator erase(iterator pos){
@@ -108,7 +114,7 @@ public:
     }
     iterator end(){
         iterator itr;
-        itr.current = tail->next;
+        itr.current = nullptr;
         return itr;
     }
 };

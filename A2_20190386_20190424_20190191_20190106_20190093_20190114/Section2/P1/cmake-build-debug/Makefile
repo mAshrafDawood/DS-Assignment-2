@@ -66,10 +66,10 @@ RM = "F:\cLion\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "F:\Courses\Data Structure\Assignment 2\A2_ID1_ID2_ID3_ID4_ID5_ID6\Section2\P1"
+CMAKE_SOURCE_DIR = "F:\Courses\Data Structure\Assignment 2\A2_20190386_20190424_20190191_20190106_20190093_20190114\Section2\P1"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "F:\Courses\Data Structure\Assignment 2\A2_ID1_ID2_ID3_ID4_ID5_ID6\Section2\P1\cmake-build-debug"
+CMAKE_BINARY_DIR = "F:\Courses\Data Structure\Assignment 2\A2_20190386_20190424_20190191_20190106_20190093_20190114\Section2\P1\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -98,9 +98,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Courses\Data Structure\Assignment 2\A2_ID1_ID2_ID3_ID4_ID5_ID6\Section2\P1\cmake-build-debug\CMakeFiles" "F:\Courses\Data Structure\Assignment 2\A2_ID1_ID2_ID3_ID4_ID5_ID6\Section2\P1\cmake-build-debug\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Courses\Data Structure\Assignment 2\A2_20190386_20190424_20190191_20190106_20190093_20190114\Section2\P1\cmake-build-debug\CMakeFiles" "F:\Courses\Data Structure\Assignment 2\A2_20190386_20190424_20190191_20190106_20190093_20190114\Section2\P1\cmake-build-debug\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Courses\Data Structure\Assignment 2\A2_ID1_ID2_ID3_ID4_ID5_ID6\Section2\P1\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "F:\Courses\Data Structure\Assignment 2\A2_20190386_20190424_20190191_20190106_20190093_20190114\Section2\P1\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
