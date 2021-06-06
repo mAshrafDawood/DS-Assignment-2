@@ -17,13 +17,16 @@ private:
             next = prev = nullptr;
         }
     };
-    Node *head, *tail;
+     Node *head, *tail;
     int length;
 public:
     class iterator{
         friend class DoubleLinkedList<T>;
         Node* current;
     public:
+        iterator(){
+            current= nullptr;
+        }
         void operator++(){
             if (current == nullptr) throw std :: runtime_error("Null pointer exception");
             if (current->next == nullptr) throw std :: runtime_error("You are already at the end of the list");
@@ -58,17 +61,17 @@ public:
         tail = temp;
         length = initSize;
     }
-    ~DoubleLinkedList(){
+    ~DoubleLinkedList() {
         emptyList();
     }
     void emptyList(){
-        Node *itr = head;
-        while (itr != tail->next){
-            Node *toDel = itr;
-            itr = itr->next;
-            delete toDel;
+       while (head != nullptr){
+           Node* itr=head;
+           head=head->next;
+            delete itr;
         }
     }
+
     int size(){
         return length;
     }
@@ -85,8 +88,15 @@ public:
             toAdd->prev = pos.current->prev;
             pos.current->prev = toAdd;
             toAdd->next = pos.current;
+        } else{
+            toAdd->next= nullptr;
+            toAdd->prev=tail;
+            tail->next=toAdd;
+            tail=toAdd;
         }
+        length++;
     }
+    //not work
     iterator erase(iterator pos){
         pos.current->prev->next = pos.current->next;
         pos.current->next->prev = pos.current->prev;
@@ -95,18 +105,26 @@ public:
         delete pos.current;
         return toRtn;
     }
-    DoubleLinkedList<T>& operator = (const DoubleLinkedList<T> anotherList){
-        emptyList();
-        iterator it2;
-        it2.current = anotherList.head->next;
-        head = anotherList.head;
-        Node* it1 = head;
-        while (it2 != anotherList.tail->next){
-            it1->next = it2.current;
-            it2++;
-            it1 = it1->next;
-        }
-    }
+    //To do
+//    DoubleLinkedList<T>& operator = (const DoubleLinkedList<T> &anotherList){
+//        if(head != nullptr){
+//            emptyList();
+//        }
+//        if(anotherList.head== nullptr){
+//            head= nullptr;
+//            tail= nullptr;
+//            length=0;
+//        }
+//        it2.current = anotherList.head->next;
+//        head = anotherList.head;
+//        Node* it1 = head;
+//        while (it1 != nullptr){
+//            it1->next = it2.current;
+//            it2=it2.current->next;
+//            it1 = it1->next;
+//        }
+//        tail=it1;
+//    }
     iterator begin(){
         iterator itr;
         itr.current = head;

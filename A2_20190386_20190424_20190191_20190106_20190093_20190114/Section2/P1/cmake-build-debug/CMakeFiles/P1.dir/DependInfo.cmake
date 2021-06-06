@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "F:/Courses/Data Structure/Assignment 2/A2_20190386_20190424_20190191_20190106_20190093_20190114/Section2/P1/main.cpp" "F:/Courses/Data Structure/Assignment 2/A2_20190386_20190424_20190191_20190106_20190093_20190114/Section2/P1/cmake-build-debug/CMakeFiles/P1.dir/main.cpp.obj"
+  "C:/p1/DS-Assignment-2/A2_20190386_20190424_20190191_20190106_20190093_20190114/Section2/P1/main.cpp" "C:/p1/DS-Assignment-2/A2_20190386_20190424_20190191_20190106_20190093_20190114/Section2/P1/cmake-build-debug/CMakeFiles/P1.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
