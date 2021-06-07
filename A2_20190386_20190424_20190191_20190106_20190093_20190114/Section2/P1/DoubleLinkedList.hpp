@@ -43,6 +43,9 @@ public:
         bool operator == (const iterator& itr){
             return current == itr.current;
         }
+        bool operator != (const iterator& itr){
+            return current != itr.current;
+        }
     };
     DoubleLinkedList(){
         head = tail = nullptr;
@@ -70,20 +73,31 @@ public:
            head=head->next;
             delete itr;
         }
+       length = 0;
     }
 
     int size(){
         return length;
     }
-    void insert(T elem, iterator pos){
+    void insert(T elem, iterator& pos){
         Node *toAdd = new Node(elem);
 
-        if (pos.current == head){
+        if (pos.current == nullptr){
+            head = toAdd;
+            pos.current = head;
+        }
+        else if(pos.current == head && length == 1){
+            head->next = toAdd;
+            tail = toAdd;
+            tail->prev = head;
+            pos.current = tail;
+        }
+        else if (pos.current == head){
             head->prev = toAdd;
             toAdd->next = head;
             head = toAdd;
         }
-        else if (pos.current != nullptr){
+        else if (pos.current != head && pos.current != tail){
             pos.current->prev->next = toAdd;
             toAdd->prev = pos.current->prev;
             pos.current->prev = toAdd;
@@ -96,35 +110,30 @@ public:
         }
         length++;
     }
-    //not work
+
     iterator erase(iterator pos){
         pos.current->prev->next = pos.current->next;
         pos.current->next->prev = pos.current->prev;
-        Node *toRtn = pos.current->next;
+        Node* toDel = pos.current;
+        pos.current = pos.current->next;
         if (pos.current == tail) throw std :: runtime_error("Unable to return out of bounds element");
-        delete pos.current;
-        return toRtn;
+        delete toDel;
+        return pos;
     }
-    //To do
-//    DoubleLinkedList<T>& operator = (const DoubleLinkedList<T> &anotherList){
-//        if(head != nullptr){
-//            emptyList();
-//        }
-//        if(anotherList.head== nullptr){
-//            head= nullptr;
-//            tail= nullptr;
-//            length=0;
-//        }
-//        it2.current = anotherList.head->next;
-//        head = anotherList.head;
-//        Node* it1 = head;
-//        while (it1 != nullptr){
-//            it1->next = it2.current;
-//            it2=it2.current->next;
-//            it1 = it1->next;
-//        }
-//        tail=it1;
-//    }
+
+    DoubleLinkedList<T>& operator = (DoubleLinkedList<T> &anotherList){
+        if (head != nullptr) emptyList();
+        DoubleLinkedList<T>::iterator itr = anotherList.begin(), itr2 = this->begin();
+        try{
+            while(itr != anotherList.end()){
+                this->insert(itr.current->info, itr2);
+                ++itr;
+            }
+        }catch (...){}
+
+        return *this;
+    }
+
     iterator begin(){
         iterator itr;
         itr.current = head;
