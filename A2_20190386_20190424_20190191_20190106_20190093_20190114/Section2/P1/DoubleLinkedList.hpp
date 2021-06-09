@@ -1,7 +1,3 @@
-//
-// Created by Mohamed on 6/3/2021.
-//
-
 #ifndef P1_DOUBLELINKEDLIST_HPP
 #define P1_DOUBLELINKEDLIST_HPP
 
@@ -17,7 +13,7 @@ private:
             next = prev = nullptr;
         }
     };
-     Node *head, *tail;
+    Node *head, *tail;
     int length;
 public:
     class iterator{
@@ -68,12 +64,12 @@ public:
         emptyList();
     }
     void emptyList(){
-       while (head != nullptr){
-           Node* itr=head;
-           head=head->next;
+        while (head != nullptr){
+            Node* itr=head;
+            head=head->next;
             delete itr;
         }
-       length = 0;
+        length = 0;
     }
 
     int size(){
@@ -81,7 +77,6 @@ public:
     }
     void insert(T elem, iterator& pos){
         Node *toAdd = new Node(elem);
-
         if (pos.current == nullptr){
             head = toAdd;
             pos.current = head;
@@ -107,6 +102,7 @@ public:
             toAdd->prev=tail;
             tail->next=toAdd;
             tail=toAdd;
+            pos.current=pos.current->next;
         }
         length++;
     }
@@ -133,7 +129,6 @@ public:
 
         return *this;
     }
-
     iterator begin(){
         iterator itr;
         itr.current = head;
@@ -144,6 +139,60 @@ public:
         itr.current = nullptr;
         return itr;
     }
+    void merge(iterator first,iterator second){
+        Node* listOne= first.current;
+        Node* listTwo= second.current;
+        Node* node=new Node();
+        node->prev= nullptr;
+        while (listOne != nullptr && listTwo != nullptr){
+            if(listOne->info > listTwo->info){
+                node->next=listTwo;
+                listTwo->prev=node;
+                listTwo=listTwo->next;
+            } else{
+                node->next=listOne;
+                listOne->prev=node;
+                listOne=listOne->next;
+            }
+            node=node->next;
+        }
+        while (listOne != nullptr){
+            node->next=listOne;
+            listOne->prev=node;
+            listOne=listOne->next;
+            node=node->next;
+        }
+        while (listTwo != nullptr){
+            node->next=listTwo;
+            listTwo->prev=node;
+            listTwo=listTwo->next;
+            node=node->next;
+        }
+
+        removeDup(first);
+    }
+    void removeDup(iterator start){
+        Node* node=start.current;
+        if(node == nullptr){
+            std::cout<<"Empty List";
+        } else{
+            while (node->next != nullptr){
+                if (node->info == node->next->info)
+                {
+                    Node*  temp = node->next->next;
+                    delete node->next;
+                    node->next = temp;
+                    temp->prev=node->next;
+                }
+
+                node = node->next;
+
+            }
+        }
+
+    }
+
+
 };
 
 #endif //P1_DOUBLELINKEDLIST_HPP
