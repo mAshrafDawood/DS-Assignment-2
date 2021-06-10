@@ -3,8 +3,9 @@
 
 using namespace std;
 
-int main() {
-	AVLTree* root = new AVLTree(14);
+int main()
+{
+	AVLTree *root = new AVLTree(14);
 
 	root = AVLTree::insertValue(root, 17);
 	root = AVLTree::insertValue(root, 11);
