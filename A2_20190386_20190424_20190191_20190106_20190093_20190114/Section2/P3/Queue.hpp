@@ -43,5 +43,37 @@ public:
     }
 
 };
+class Stack{
+    Queue <int> *stack;
+
+public:
+    Stack(){
+        stack = new Queue<int>();
+    }
+    int& top(){
+        return stack->front();
+    }
+    void pop(){
+
+        stack->pop();
+    }
+    void push(int value){
+
+        DoubleLinkedList <int> list1 ;
+
+        DoubleLinkedList <int> ::iterator it1 = list1.end();
+        list1.insert(value,it1);
+        while (stack->size()) {
+            list1.insert(stack->front(), it1);
+            stack->pop();
+        }
+        for(it1=list1.begin();it1!=list1.end();++it1){
+            stack->push(*it1);
+        }
+
+    }
+
+
+};
 
 #endif //QUEUE_USING_DLL_QUEUE_HPP

@@ -80,7 +80,7 @@ public:
         while (head != tail){
             Node* itr=head;
             head=head->next;
-            delete &itr;
+            delete itr;
         }
         length = 0;
     }
@@ -117,7 +117,7 @@ public:
             pos.current->next->prev = pos.current->prev;
         }
         pos.current = pos.current->next;
-        delete &toDel;
+        delete toDel;
         length--;
         return pos;
     }
