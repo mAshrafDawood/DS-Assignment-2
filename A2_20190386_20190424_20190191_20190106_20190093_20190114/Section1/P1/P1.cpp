@@ -83,7 +83,6 @@ void mergeSort(int nums[], int length)
 {
     mergeSort(nums, 0, length - 1);
     cout << "Sorted By Merge Sort: ";
-    //print_arr(nums, length);
 }
 
 int partitionMiddle(int nums[], int start, int end, int pivot)
@@ -129,7 +128,6 @@ void quickSortMiddlePivot(int nums[], int length)
 {
     quickSortMiddlePivot(nums, 0, length - 1);
     cout << "Sorted By Quick Sort: ";
-    //print_arr(nums, length);
 }
 
 int partitionEnd(int nums[], int low, int high)
@@ -194,10 +192,6 @@ void randGenerator(int nums[], int length)
 
 int main()
 {
-
-    // ios_base::sync_with_stdio(0);
-    // cin.tie();
-
     int nums1[5000];
     int nums2[10000];
     int nums3[100000];
