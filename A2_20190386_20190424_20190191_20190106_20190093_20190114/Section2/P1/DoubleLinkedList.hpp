@@ -1,6 +1,9 @@
 #ifndef P1_DOUBLELINKEDLIST_HPP
 #define P1_DOUBLELINKEDLIST_HPP
 
+#include <stdexcept>
+#include <iostream>
+
 template <typename T> class DoubleLinkedList{
 private:
     class Node {
