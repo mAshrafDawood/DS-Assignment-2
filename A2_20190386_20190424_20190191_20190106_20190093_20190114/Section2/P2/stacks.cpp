@@ -78,12 +78,6 @@ stack<T>::~stack()
 
 int main()
 {
-    stack<int> ST;
-    ST.push(50);
-    ST.push(25);
-    ST.push(30);
-    cout << ST.top() << endl;
-
     stack<char> st1;
     string statement;
     cout << "Enter the expression u want to check" << endl;
