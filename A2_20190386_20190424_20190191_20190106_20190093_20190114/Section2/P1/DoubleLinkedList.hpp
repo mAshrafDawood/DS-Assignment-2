@@ -26,7 +26,7 @@ public:
         }
         void operator++(){
             if (current == nullptr) throw std :: runtime_error("Null pointer exception");
-            if (current->next == nullptr) throw std :: runtime_error("You are already at the end of the list");
+            if (current->next->next == nullptr) throw std :: runtime_error("You are already at the end of the list");
             current = current->next;
         }
         void operator--(){
@@ -72,7 +72,12 @@ public:
 
 
     ~DoubleLinkedList() {
-        emptyList();
+        while (head == tail){
+            Node* itr=head;
+            head=head->next;
+            delete itr;
+        }
+        length = 0;
     }
 
 
@@ -141,20 +146,20 @@ public:
         return itr;
     }
 
-
     iterator end(){
         iterator itr;
         itr.current = tail;
         return itr;
     }
 
-
-    void merge(iterator first,iterator second){
+    void merge(iterator first,iterator second,iterator endArr1,iterator endArr2){
         Node* listOne= first.current;
         Node* listTwo= second.current;
+        Node* lastArr=endArr1.current;
+        Node* lastArr2=endArr2.current;
         Node* node=new Node();
         node->prev= nullptr;
-        while (listOne != nullptr && listTwo != nullptr){
+        while (listOne != lastArr && listTwo != lastArr2){
             if(listOne->info > listTwo->info){
                 node->next=listTwo;
                 listTwo->prev=node;
@@ -166,13 +171,13 @@ public:
             }
             node=node->next;
         }
-        while (listOne != nullptr){
+        while (listOne != lastArr){
             node->next=listOne;
             listOne->prev=node;
             listOne=listOne->next;
             node=node->next;
         }
-        while (listTwo != nullptr){
+        while (listTwo != lastArr2){
             node->next=listTwo;
             listTwo->prev=node;
             listTwo=listTwo->next;
@@ -198,7 +203,6 @@ public:
                 }
 
                 node = node->next;
-
             }
         }
 

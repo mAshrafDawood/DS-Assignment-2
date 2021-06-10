@@ -11,6 +11,7 @@ int main() {
     arr1.insert(6, it1);
     arr1.insert(7, it1);
     arr1.insert(9, it1);
+    arr1.insert(9, it1);
     arr1.insert(15, it1);
     arr1.insert(16, it1);
 
@@ -29,6 +30,9 @@ int main() {
     arr2.insert(6, it2);
     arr2.insert(8, it2);
     arr2.insert(12, it2);
+    arr2.insert(18, it2);
+    arr2.insert(20,it2);
+    arr2.insert(25,it2);
     std :: cout << "List 2--> ";
     try{
         DoubleLinkedList<int>::iterator itr = arr2.begin();
@@ -41,7 +45,9 @@ int main() {
     }
     DoubleLinkedList<int>::iterator it3 = arr1.begin();
     DoubleLinkedList<int>::iterator it4=arr2.begin();
-    arr1.merge(it3,it4);
+    DoubleLinkedList<int>::iterator it6 = arr1.end();
+    DoubleLinkedList<int>::iterator it7=arr2.end();
+    arr1.merge(it3,it4,it6,it7);
     std :: cout << "After merge---> ";
     try{
         DoubleLinkedList<int>::iterator itr = arr1.begin();
@@ -52,6 +58,5 @@ int main() {
     }catch (...){
         std :: cout << "\n";
     }
-
     return 0;
 }
